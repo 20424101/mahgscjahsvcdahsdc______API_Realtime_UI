@@ -37,10 +37,11 @@
 
     function loadActor(){
         $.ajax({
-            url: `http://localhost:3000/api/actors?ts=${ts}`,
+            url: `http://localhost:3000/api/actors/long_polling?ts=${ts}`,
             type: 'GET',
             dataType: 'json',
-            contentType: 'application/json'
+            contentType: 'application/json',
+            timeout: 15000
         }).done(function (res){
             for(const actor of res.list){
                 const tr = `<tr>
@@ -57,7 +58,7 @@
         }).fail(function (err){
             console.log(err);
         }).always(function(){
-            setTimeout(loadActor, 3000);
+            loadActor();
         })
     }
 

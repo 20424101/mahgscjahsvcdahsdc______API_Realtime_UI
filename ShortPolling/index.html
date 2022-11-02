@@ -37,7 +37,7 @@
 
     function loadActor(){
         $.ajax({
-            url: `http://localhost:3000/api/actors?ts=${ts}`,
+            url: `http://localhost:3000/api/actors/short_polling?ts=${ts}`,
             type: 'GET',
             dataType: 'json',
             contentType: 'application/json'
